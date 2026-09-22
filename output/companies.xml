@@ -1,0 +1,703 @@
+<?xml version="1.0" ?>
+<companies source="https://companiesmarketcap.com/">
+  <company id="1">
+    <rank>1</rank>
+    <name>NVIDIANVDA</name>
+    <ticker/>
+    <marketcap_now>$5.490 T</marketcap_now>
+    <url>https://companiesmarketcap.com/nvidia/marketcap/</url>
+  </company>
+  <company id="2">
+    <rank>2</rank>
+    <name>AppleAAPL</name>
+    <ticker/>
+    <marketcap_now>$4.947 T</marketcap_now>
+    <url>https://companiesmarketcap.com/apple/marketcap/</url>
+  </company>
+  <company id="3">
+    <rank>3</rank>
+    <name>Alphabet</name>
+    <ticker>(Google)GOOG</ticker>
+    <marketcap_now>$4.291 T</marketcap_now>
+    <url>https://companiesmarketcap.com/alphabet-google/marketcap/</url>
+  </company>
+  <company id="4">
+    <rank>4</rank>
+    <name>MicrosoftMSFT</name>
+    <ticker/>
+    <marketcap_now>$3.724 T</marketcap_now>
+    <url>https://companiesmarketcap.com/microsoft/marketcap/</url>
+  </company>
+  <company id="5">
+    <rank>5</rank>
+    <name>AmazonAMZN</name>
+    <ticker/>
+    <marketcap_now>$2.787 T</marketcap_now>
+    <url>https://companiesmarketcap.com/amazon/marketcap/</url>
+  </company>
+  <company id="6">
+    <rank>6</rank>
+    <name>TSMCTSM</name>
+    <ticker/>
+    <marketcap_now>$2.308 T</marketcap_now>
+    <url>https://companiesmarketcap.com/tsmc/marketcap/</url>
+  </company>
+  <company id="7">
+    <rank>7</rank>
+    <name>SpaceXSPCX</name>
+    <ticker/>
+    <marketcap_now>$2.001 T</marketcap_now>
+    <url>https://companiesmarketcap.com/spacex/marketcap/</url>
+  </company>
+  <company id="8">
+    <rank>8</rank>
+    <name>Meta Platforms</name>
+    <ticker>(Facebook)META</ticker>
+    <marketcap_now>$1.888 T</marketcap_now>
+    <url>https://companiesmarketcap.com/meta-platforms/marketcap/</url>
+  </company>
+  <company id="9">
+    <rank>9</rank>
+    <name>BroadcomAVGO</name>
+    <ticker/>
+    <marketcap_now>$1.731 T</marketcap_now>
+    <url>https://companiesmarketcap.com/broadcom/marketcap/</url>
+  </company>
+  <company id="10">
+    <rank>10</rank>
+    <name>Saudi</name>
+    <ticker>Aramco2222.SR</ticker>
+    <marketcap_now>$1.653 T</marketcap_now>
+    <url>https://companiesmarketcap.com/saudi-aramco/marketcap/</url>
+  </company>
+  <company id="11">
+    <rank>11</rank>
+    <name>TeslaTSLA</name>
+    <ticker/>
+    <marketcap_now>$1.482 T</marketcap_now>
+    <url>https://companiesmarketcap.com/tesla/marketcap/</url>
+  </company>
+  <company id="12">
+    <rank>12</rank>
+    <name>Samsung005930.KS</name>
+    <ticker/>
+    <marketcap_now>$1.338 T</marketcap_now>
+    <url>https://companiesmarketcap.com/samsung/marketcap/</url>
+  </company>
+  <company id="13">
+    <rank>13</rank>
+    <name>Micron</name>
+    <ticker>TechnologyMU</ticker>
+    <marketcap_now>$1.179 T</marketcap_now>
+    <url>https://companiesmarketcap.com/micron-technology/marketcap/</url>
+  </company>
+  <company id="14">
+    <rank>14</rank>
+    <name>Berkshire</name>
+    <ticker>HathawayBRK-B</ticker>
+    <marketcap_now>$1.074 T</marketcap_now>
+    <url>https://companiesmarketcap.com/berkshire-hathaway/marketcap/</url>
+  </company>
+  <company id="15">
+    <rank>15</rank>
+    <name>Eli</name>
+    <ticker>LillyLLY</ticker>
+    <marketcap_now>$1.038 T</marketcap_now>
+    <url>https://companiesmarketcap.com/eli-lilly/marketcap/</url>
+  </company>
+  <company id="16">
+    <rank>16</rank>
+    <name>AMDAMD</name>
+    <ticker/>
+    <marketcap_now>$1.004 T</marketcap_now>
+    <url>https://companiesmarketcap.com/amd/marketcap/</url>
+  </company>
+  <company id="17">
+    <rank>17</rank>
+    <name>SK</name>
+    <ticker>Hynix000660.KS</ticker>
+    <marketcap_now>$962.81 B</marketcap_now>
+    <url>https://companiesmarketcap.com/sk-hynix/marketcap/</url>
+  </company>
+  <company id="18">
+    <rank>18</rank>
+    <name>JPMorgan</name>
+    <ticker>ChaseJPM</ticker>
+    <marketcap_now>$935.78 B</marketcap_now>
+    <url>https://companiesmarketcap.com/jp-morgan-chase/marketcap/</url>
+  </company>
+  <company id="19">
+    <rank>19</rank>
+    <name>WalmartWMT</name>
+    <ticker/>
+    <marketcap_now>$855.01 B</marketcap_now>
+    <url>https://companiesmarketcap.com/walmart/marketcap/</url>
+  </company>
+  <company id="20">
+    <rank>20</rank>
+    <name>VisaV</name>
+    <ticker/>
+    <marketcap_now>$694.52 B</marketcap_now>
+    <url>https://companiesmarketcap.com/visa/marketcap/</url>
+  </company>
+  <company id="21">
+    <rank>21</rank>
+    <name>ASMLASML</name>
+    <ticker/>
+    <marketcap_now>$657.31 B</marketcap_now>
+    <url>https://companiesmarketcap.com/asml/marketcap/</url>
+  </company>
+  <company id="22">
+    <rank>22</rank>
+    <name>Exxon</name>
+    <ticker>MobilXOM</ticker>
+    <marketcap_now>$650.91 B</marketcap_now>
+    <url>https://companiesmarketcap.com/exxon-mobil/marketcap/</url>
+  </company>
+  <company id="23">
+    <rank>23</rank>
+    <name>Johnson &amp;</name>
+    <ticker>JohnsonJNJ</ticker>
+    <marketcap_now>$649.39 B</marketcap_now>
+    <url>https://companiesmarketcap.com/johnson-and-johnson/marketcap/</url>
+  </company>
+  <company id="24">
+    <rank>24</rank>
+    <name>IntelINTC</name>
+    <ticker/>
+    <marketcap_now>$643.74 B</marketcap_now>
+    <url>https://companiesmarketcap.com/intel/marketcap/</url>
+  </company>
+  <company id="25">
+    <rank>25</rank>
+    <name>CXMT688825.SS</name>
+    <ticker/>
+    <marketcap_now>$611.91 B</marketcap_now>
+    <url>https://companiesmarketcap.com/cxmt/marketcap/</url>
+  </company>
+  <company id="26">
+    <rank>26</rank>
+    <name>TencentTCEHY</name>
+    <ticker/>
+    <marketcap_now>$504.49 B</marketcap_now>
+    <url>https://companiesmarketcap.com/tencent/marketcap/</url>
+  </company>
+  <company id="27">
+    <rank>27</rank>
+    <name>MastercardMA</name>
+    <ticker/>
+    <marketcap_now>$497.26 B</marketcap_now>
+    <url>https://companiesmarketcap.com/mastercard/marketcap/</url>
+  </company>
+  <company id="28">
+    <rank>28</rank>
+    <name>AbbVieABBV</name>
+    <ticker/>
+    <marketcap_now>$467.36 B</marketcap_now>
+    <url>https://companiesmarketcap.com/abbvie/marketcap/</url>
+  </company>
+  <company id="29">
+    <rank>29</rank>
+    <name>OracleORCL</name>
+    <ticker/>
+    <marketcap_now>$449.20 B</marketcap_now>
+    <url>https://companiesmarketcap.com/oracle/marketcap/</url>
+  </company>
+  <company id="30">
+    <rank>30</rank>
+    <name>PalantirPLTR</name>
+    <ticker/>
+    <marketcap_now>$439.97 B</marketcap_now>
+    <url>https://companiesmarketcap.com/palantir/marketcap/</url>
+  </company>
+  <company id="31">
+    <rank>31</rank>
+    <name>CiscoCSCO</name>
+    <ticker/>
+    <marketcap_now>$439.44 B</marketcap_now>
+    <url>https://companiesmarketcap.com/cisco/marketcap/</url>
+  </company>
+  <company id="32">
+    <rank>32</rank>
+    <name>China Construction</name>
+    <ticker>Bank601939.SS</ticker>
+    <marketcap_now>$426.62 B</marketcap_now>
+    <url>https://companiesmarketcap.com/china-construction-bank/marketcap/</url>
+  </company>
+  <company id="33">
+    <rank>33</rank>
+    <name>Bank of</name>
+    <ticker>AmericaBAC</ticker>
+    <marketcap_now>$405.29 B</marketcap_now>
+    <url>https://companiesmarketcap.com/bank-of-america/marketcap/</url>
+  </company>
+  <company id="34">
+    <rank>34</rank>
+    <name>ChevronCVX</name>
+    <ticker/>
+    <marketcap_now>$399.51 B</marketcap_now>
+    <url>https://companiesmarketcap.com/chevron/marketcap/</url>
+  </company>
+  <company id="35">
+    <rank>35</rank>
+    <name>CostcoCOST</name>
+    <ticker/>
+    <marketcap_now>$398.45 B</marketcap_now>
+    <url>https://companiesmarketcap.com/costco/marketcap/</url>
+  </company>
+  <company id="36">
+    <rank>36</rank>
+    <name>Lam</name>
+    <ticker>ResearchLRCX</ticker>
+    <marketcap_now>$378.24 B</marketcap_now>
+    <url>https://companiesmarketcap.com/lam-research/marketcap/</url>
+  </company>
+  <company id="37">
+    <rank>37</rank>
+    <name>CaterpillarCAT</name>
+    <ticker/>
+    <marketcap_now>$375.32 B</marketcap_now>
+    <url>https://companiesmarketcap.com/caterpillar/marketcap/</url>
+  </company>
+  <company id="38">
+    <rank>38</rank>
+    <name>Coca-ColaKO</name>
+    <ticker/>
+    <marketcap_now>$374.83 B</marketcap_now>
+    <url>https://companiesmarketcap.com/coca-cola/marketcap/</url>
+  </company>
+  <company id="39">
+    <rank>39</rank>
+    <name>MerckMRK</name>
+    <ticker/>
+    <marketcap_now>$368.84 B</marketcap_now>
+    <url>https://companiesmarketcap.com/merck/marketcap/</url>
+  </company>
+  <company id="40">
+    <rank>40</rank>
+    <name>Applied</name>
+    <ticker>MaterialsAMAT</ticker>
+    <marketcap_now>$368.41 B</marketcap_now>
+    <url>https://companiesmarketcap.com/applied-materials/marketcap/</url>
+  </company>
+  <company id="41">
+    <rank>41</rank>
+    <name>DellDELL</name>
+    <ticker/>
+    <marketcap_now>$365.78 B</marketcap_now>
+    <url>https://companiesmarketcap.com/dell/marketcap/</url>
+  </company>
+  <company id="42">
+    <rank>42</rank>
+    <name>RocheRO.SW</name>
+    <ticker/>
+    <marketcap_now>$360.53 B</marketcap_now>
+    <url>https://companiesmarketcap.com/roche/marketcap/</url>
+  </company>
+  <company id="43">
+    <rank>43</rank>
+    <name>Agricultural Bank of</name>
+    <ticker>China601288.SS</ticker>
+    <marketcap_now>$360.12 B</marketcap_now>
+    <url>https://companiesmarketcap.com/agricultural-bank-of-china/marketcap/</url>
+  </company>
+  <company id="44">
+    <rank>44</rank>
+    <name>HSBCHSBC</name>
+    <ticker/>
+    <marketcap_now>$353.20 B</marketcap_now>
+    <url>https://companiesmarketcap.com/hsbc/marketcap/</url>
+  </company>
+  <company id="45">
+    <rank>45</rank>
+    <name>Arm</name>
+    <ticker>HoldingsARM</ticker>
+    <marketcap_now>$344.85 B</marketcap_now>
+    <url>https://companiesmarketcap.com/arm-holdings/marketcap/</url>
+  </company>
+  <company id="46">
+    <rank>46</rank>
+    <name>ICBC1398.HK</name>
+    <ticker/>
+    <marketcap_now>$341.91 B</marketcap_now>
+    <url>https://companiesmarketcap.com/icbc/marketcap/</url>
+  </company>
+  <company id="47">
+    <rank>47</rank>
+    <name>Procter &amp;</name>
+    <ticker>GamblePG</ticker>
+    <marketcap_now>$339.29 B</marketcap_now>
+    <url>https://companiesmarketcap.com/procter-and-gamble/marketcap/</url>
+  </company>
+  <company id="48">
+    <rank>48</rank>
+    <name>UnitedHealthUNH</name>
+    <ticker/>
+    <marketcap_now>$338.89 B</marketcap_now>
+    <url>https://companiesmarketcap.com/united-health/marketcap/</url>
+  </company>
+  <company id="49">
+    <rank>49</rank>
+    <name>General</name>
+    <ticker>ElectricGE</ticker>
+    <marketcap_now>$330.99 B</marketcap_now>
+    <url>https://companiesmarketcap.com/general-electric/marketcap/</url>
+  </company>
+  <company id="50">
+    <rank>50</rank>
+    <name>Morgan</name>
+    <ticker>StanleyMS</ticker>
+    <marketcap_now>$323.72 B</marketcap_now>
+    <url>https://companiesmarketcap.com/morgan-stanley/marketcap/</url>
+  </company>
+  <company id="51">
+    <rank>51</rank>
+    <name>Bank of</name>
+    <ticker>China601988.SS</ticker>
+    <marketcap_now>$319.99 B</marketcap_now>
+    <url>https://companiesmarketcap.com/bank-of-china/marketcap/</url>
+  </company>
+  <company id="52">
+    <rank>52</rank>
+    <name>NetflixNFLX</name>
+    <ticker/>
+    <marketcap_now>$305.46 B</marketcap_now>
+    <url>https://companiesmarketcap.com/netflix/marketcap/</url>
+  </company>
+  <company id="53">
+    <rank>53</rank>
+    <name>Palo Alto</name>
+    <ticker>NetworksPANW</ticker>
+    <marketcap_now>$304.09 B</marketcap_now>
+    <url>https://companiesmarketcap.com/palo-alto-networks/marketcap/</url>
+  </company>
+  <company id="54">
+    <rank>54</rank>
+    <name>Home</name>
+    <ticker>DepotHD</ticker>
+    <marketcap_now>$296.51 B</marketcap_now>
+    <url>https://companiesmarketcap.com/home-depot/marketcap/</url>
+  </company>
+  <company id="55">
+    <rank>55</rank>
+    <name>Philip Morris</name>
+    <ticker>InternationalPM</ticker>
+    <marketcap_now>$292.20 B</marketcap_now>
+    <url>https://companiesmarketcap.com/philip-morris/marketcap/</url>
+  </company>
+  <company id="56">
+    <rank>56</rank>
+    <name>AlibabaBABA</name>
+    <ticker/>
+    <marketcap_now>$287.71 B</marketcap_now>
+    <url>https://companiesmarketcap.com/alibaba/marketcap/</url>
+  </company>
+  <company id="57">
+    <rank>57</rank>
+    <name>Royal Bank Of</name>
+    <ticker>CanadaRY</ticker>
+    <marketcap_now>$285.45 B</marketcap_now>
+    <url>https://companiesmarketcap.com/royal-bank-of-canada/marketcap/</url>
+  </company>
+  <company id="58">
+    <rank>58</rank>
+    <name>Goldman</name>
+    <ticker>SachsGS</ticker>
+    <marketcap_now>$279.34 B</marketcap_now>
+    <url>https://companiesmarketcap.com/goldman-sachs/marketcap/</url>
+  </company>
+  <company id="59">
+    <rank>59</rank>
+    <name>NovartisNVS</name>
+    <ticker/>
+    <marketcap_now>$267.96 B</marketcap_now>
+    <url>https://companiesmarketcap.com/novartis/marketcap/</url>
+  </company>
+  <company id="60">
+    <rank>60</rank>
+    <name>ShellSHEL</name>
+    <ticker/>
+    <marketcap_now>$266.35 B</marketcap_now>
+    <url>https://companiesmarketcap.com/shell/marketcap/</url>
+  </company>
+  <company id="61">
+    <rank>61</rank>
+    <name>Mitsubishi UFJ</name>
+    <ticker>FinancialMUFG</ticker>
+    <marketcap_now>$263.61 B</marketcap_now>
+    <url>https://companiesmarketcap.com/mitsubishi-ufj-financial/marketcap/</url>
+  </company>
+  <company id="62">
+    <rank>62</rank>
+    <name>RTXRTX</name>
+    <ticker/>
+    <marketcap_now>$261.92 B</marketcap_now>
+    <url>https://companiesmarketcap.com/raytheon-technologies/marketcap/</url>
+  </company>
+  <company id="63">
+    <rank>63</rank>
+    <name>Wells</name>
+    <ticker>FargoWFC</ticker>
+    <marketcap_now>$261.69 B</marketcap_now>
+    <url>https://companiesmarketcap.com/wells-fargo/marketcap/</url>
+  </company>
+  <company id="64">
+    <rank>64</rank>
+    <name>MediaTek2454.TW</name>
+    <ticker/>
+    <marketcap_now>$261.21 B</marketcap_now>
+    <url>https://companiesmarketcap.com/mediatek/marketcap/</url>
+  </company>
+  <company id="65">
+    <rank>65</rank>
+    <name>AstraZenecaAZN</name>
+    <ticker/>
+    <marketcap_now>$260.70 B</marketcap_now>
+    <url>https://companiesmarketcap.com/astrazeneca/marketcap/</url>
+  </company>
+  <company id="66">
+    <rank>66</rank>
+    <name>Arista</name>
+    <ticker>NetworksANET</ticker>
+    <marketcap_now>$259.08 B</marketcap_now>
+    <url>https://companiesmarketcap.com/arista-networks/marketcap/</url>
+  </company>
+  <company id="67">
+    <rank>67</rank>
+    <name>SandiskSNDK</name>
+    <ticker/>
+    <marketcap_now>$258.66 B</marketcap_now>
+    <url>https://companiesmarketcap.com/sandisk/marketcap/</url>
+  </company>
+  <company id="68">
+    <rank>68</rank>
+    <name>CrowdStrikeCRWD</name>
+    <ticker/>
+    <marketcap_now>$255.31 B</marketcap_now>
+    <url>https://companiesmarketcap.com/crowdstrike/marketcap/</url>
+  </company>
+  <company id="69">
+    <rank>69</rank>
+    <name>GE</name>
+    <ticker>VernovaGEV</ticker>
+    <marketcap_now>$252.01 B</marketcap_now>
+    <url>https://companiesmarketcap.com/ge-vernova/marketcap/</url>
+  </company>
+  <company id="70">
+    <rank>70</rank>
+    <name>Texas</name>
+    <ticker>InstrumentsTXN</ticker>
+    <marketcap_now>$247.37 B</marketcap_now>
+    <url>https://companiesmarketcap.com/texas-instruments/marketcap/</url>
+  </company>
+  <company id="71">
+    <rank>71</rank>
+    <name>SiemensSIE.DE</name>
+    <ticker/>
+    <marketcap_now>$245.08 B</marketcap_now>
+    <url>https://companiesmarketcap.com/siemens/marketcap/</url>
+  </company>
+  <company id="72">
+    <rank>72</rank>
+    <name>Thermo Fisher</name>
+    <ticker>ScientificTMO</ticker>
+    <marketcap_now>$243.57 B</marketcap_now>
+    <url>https://companiesmarketcap.com/thermo-fisher-scientific/marketcap/</url>
+  </company>
+  <company id="73">
+    <rank>73</rank>
+    <name>SAPSAP</name>
+    <ticker/>
+    <marketcap_now>$241.48 B</marketcap_now>
+    <url>https://companiesmarketcap.com/sap/marketcap/</url>
+  </company>
+  <company id="74">
+    <rank>74</rank>
+    <name>NestléNESN.SW</name>
+    <ticker/>
+    <marketcap_now>$240.39 B</marketcap_now>
+    <url>https://companiesmarketcap.com/nestle/marketcap/</url>
+  </company>
+  <company id="75">
+    <rank>75</rank>
+    <name>KLAKLAC</name>
+    <ticker/>
+    <marketcap_now>$240.36 B</marketcap_now>
+    <url>https://companiesmarketcap.com/kla/marketcap/</url>
+  </company>
+  <company id="76">
+    <rank>76</rank>
+    <name>L'OréalOR.PA</name>
+    <ticker/>
+    <marketcap_now>$236.75 B</marketcap_now>
+    <url>https://companiesmarketcap.com/l-oreal/marketcap/</url>
+  </company>
+  <company id="77">
+    <rank>77</rank>
+    <name>Kweichow</name>
+    <ticker>Moutai600519.SS</ticker>
+    <marketcap_now>$234.35 B</marketcap_now>
+    <url>https://companiesmarketcap.com/kweichow-moutai/marketcap/</url>
+  </company>
+  <company id="78">
+    <rank>78</rank>
+    <name>Marvell</name>
+    <ticker>TechnologyMRVL</ticker>
+    <marketcap_now>$231.30 B</marketcap_now>
+    <url>https://companiesmarketcap.com/marvell/marketcap/</url>
+  </company>
+  <company id="79">
+    <rank>79</rank>
+    <name>LVMHMC.PA</name>
+    <ticker/>
+    <marketcap_now>$228.89 B</marketcap_now>
+    <url>https://companiesmarketcap.com/lvmh/marketcap/</url>
+  </company>
+  <company id="80">
+    <rank>80</rank>
+    <name>SoftBank Group</name>
+    <ticker>Corp.9984.T</ticker>
+    <marketcap_now>$228.46 B</marketcap_now>
+    <url>https://companiesmarketcap.com/softbank/marketcap/</url>
+  </company>
+  <company id="81">
+    <rank>81</rank>
+    <name>ToyotaTM</name>
+    <ticker/>
+    <marketcap_now>$227.95 B</marketcap_now>
+    <url>https://companiesmarketcap.com/toyota/marketcap/</url>
+  </company>
+  <company id="82">
+    <rank>82</rank>
+    <name>CitigroupC</name>
+    <ticker/>
+    <marketcap_now>$226.53 B</marketcap_now>
+    <url>https://companiesmarketcap.com/citigroup/marketcap/</url>
+  </company>
+  <company id="83">
+    <rank>83</rank>
+    <name>PetroChina0857.HK</name>
+    <ticker/>
+    <marketcap_now>$220.49 B</marketcap_now>
+    <url>https://companiesmarketcap.com/petro-china/marketcap/</url>
+  </company>
+  <company id="84">
+    <rank>84</rank>
+    <name>International Holding</name>
+    <ticker>CompanyIHC.AE</ticker>
+    <marketcap_now>$219.19 B</marketcap_now>
+    <url>https://companiesmarketcap.com/international-holding-company/marketcap/</url>
+  </company>
+  <company id="85">
+    <rank>85</rank>
+    <name>BHP</name>
+    <ticker>GroupBHP</ticker>
+    <marketcap_now>$218.79 B</marketcap_now>
+    <url>https://companiesmarketcap.com/bhp-group/marketcap/</url>
+  </company>
+  <company id="86">
+    <rank>86</rank>
+    <name>China</name>
+    <ticker>Mobile0941.HK</ticker>
+    <marketcap_now>$218.52 B</marketcap_now>
+    <url>https://companiesmarketcap.com/china-mobile/marketcap/</url>
+  </company>
+  <company id="87">
+    <rank>87</rank>
+    <name>IBMIBM</name>
+    <ticker/>
+    <marketcap_now>$218.50 B</marketcap_now>
+    <url>https://companiesmarketcap.com/ibm/marketcap/</url>
+  </company>
+  <company id="88">
+    <rank>88</rank>
+    <name>AmgenAMGN</name>
+    <ticker/>
+    <marketcap_now>$212.55 B</marketcap_now>
+    <url>https://companiesmarketcap.com/amgen/marketcap/</url>
+  </company>
+  <company id="89">
+    <rank>89</rank>
+    <name>SantanderSAN</name>
+    <ticker/>
+    <marketcap_now>$212.11 B</marketcap_now>
+    <url>https://companiesmarketcap.com/santander/marketcap/</url>
+  </company>
+  <company id="90">
+    <rank>90</rank>
+    <name>American</name>
+    <ticker>ExpressAXP</ticker>
+    <marketcap_now>$211.77 B</marketcap_now>
+    <url>https://companiesmarketcap.com/american-express/marketcap/</url>
+  </company>
+  <company id="91">
+    <rank>91</rank>
+    <name>LindeLIN</name>
+    <ticker/>
+    <marketcap_now>$210.89 B</marketcap_now>
+    <url>https://companiesmarketcap.com/linde/marketcap/</url>
+  </company>
+  <company id="92">
+    <rank>92</rank>
+    <name>CATL300750.SZ</name>
+    <ticker/>
+    <marketcap_now>$210.51 B</marketcap_now>
+    <url>https://companiesmarketcap.com/catl/marketcap/</url>
+  </company>
+  <company id="93">
+    <rank>93</rank>
+    <name>QUALCOMMQCOM</name>
+    <ticker/>
+    <marketcap_now>$207.44 B</marketcap_now>
+    <url>https://companiesmarketcap.com/qualcomm/marketcap/</url>
+  </company>
+  <company id="94">
+    <rank>94</rank>
+    <name>Toronto Dominion</name>
+    <ticker>BankTD</ticker>
+    <marketcap_now>$203.24 B</marketcap_now>
+    <url>https://companiesmarketcap.com/toronto-dominion-bank/marketcap/</url>
+  </company>
+  <company id="95">
+    <rank>95</rank>
+    <name>Seagate</name>
+    <ticker>TechnologySTX</ticker>
+    <marketcap_now>$199.49 B</marketcap_now>
+    <url>https://companiesmarketcap.com/seagate/marketcap/</url>
+  </company>
+  <company id="96">
+    <rank>96</rank>
+    <name>AmphenolAPH</name>
+    <ticker/>
+    <marketcap_now>$199.05 B</marketcap_now>
+    <url>https://companiesmarketcap.com/amphenol/marketcap/</url>
+  </company>
+  <company id="97">
+    <rank>97</rank>
+    <name>TotalEnergiesTTE</name>
+    <ticker/>
+    <marketcap_now>$198.94 B</marketcap_now>
+    <url>https://companiesmarketcap.com/totalenergies/marketcap/</url>
+  </company>
+  <company id="98">
+    <rank>98</rank>
+    <name>VerizonVZ</name>
+    <ticker/>
+    <marketcap_now>$198.09 B</marketcap_now>
+    <url>https://companiesmarketcap.com/verizon/marketcap/</url>
+  </company>
+  <company id="99">
+    <rank>99</rank>
+    <name>SalesforceCRM</name>
+    <ticker/>
+    <marketcap_now>$194.57 B</marketcap_now>
+    <url>https://companiesmarketcap.com/salesforce/marketcap/</url>
+  </company>
+  <company id="100">
+    <rank>100</rank>
+    <name>Allianz</name>
+    <ticker>SEALV.DE</ticker>
+    <marketcap_now>$193.66 B</marketcap_now>
+    <url>https://companiesmarketcap.com/allianz/marketcap/</url>
+  </company>
+</companies>

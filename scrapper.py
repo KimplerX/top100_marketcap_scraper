@@ -1,27 +1,30 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Скрапер капіталізації топ-100 компаній світу за роками + іконки компаній.
+Скрапер топ-100 компаній світу за капіталізацією.
 
-Джерело: https://companiesmarketcap.com/  (перша сторінка рейтингу = топ-100
-компаній за поточною капіталізацією; сайт статичний, серверно-рендерений).
+=====================================================================
+1. ДЖЕРЕЛО ДАНИХ (відкрите, статичне):
+       https://companiesmarketcap.com/
 
-Алгоритм:
-    1. Завантажуємо головну сторінку рейтингу -> отримуємо топ-100 компаній
-       (назва, тикер, поточна капіталізація, URL сторінки компанії).
-    2. Для кожної компанії переходимо на її сторінку
-       (https://companiesmarketcap.com/{slug}/marketcap/) і парсимо таблицю
-       "Market cap history" -- капіталізацію компанії за кожен рік.
-    3. На тій же сторінці компанії знаходимо URL її іконки (логотипу) і
-       завантажуємо саме зображення у папку logos/ (один файл на компанію).
-    4. Зберігаємо результат у CSV та JSON. У КОЖНОМУ JSON-записі (кожен рік
-       капіталізації) є посилання на іконку компанії: і оригінальний URL
-       (image_url), і шлях до вже завантаженого локального файлу
-       (image_local_path).
+   Головна сторінка -- це список ПІДРОЗДІЛІВ (топ-100 компаній за
+   капіталізацією), кожна компанія має власний URL:
+       https://companiesmarketcap.com/{slug}/marketcap/
+   На сторінці кожної компанії є список ОБ'ЄКТІВ -- капіталізація
+   компанії за кожен рік (таблиця "Market cap history"), а також
+   зображення -- іконка (логотип) компанії.
+=====================================================================
+
+Відповідність пунктів завдання:
+    2. step2_download_and_print()      -- завантаження + друк у консоль + перевірка статичності
+    3. parse_top_companies()           -- список компаній+URL -> companies.txt, companies.xml
+    4. parse_marketcap_by_year()       -- капіталізація за роками  -> stock_records.txt, stock_records.json
+    5. extract_logo_url()/download_*() -- логотипи -> output/images/, images.txt, images.csv
+    6. save_to_database()              -- усі дані -> output/stocks_data.db (SQLite)
 
 Запуск:
     pip install requests beautifulsoup4 lxml
-    python3 top100_marketcap_scraper.py
+    python3 full_scraper.py
 """
 
 import os
@@ -29,6 +32,7 @@ import re
 import csv
 import json
 import time
+import sqlite3
 import logging
 from dataclasses import dataclass, asdict
 from typing import List, Optional
@@ -36,15 +40,17 @@ from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
+from xml.etree.ElementTree import Element, SubElement, tostring
+from xml.dom import minidom
 
 # ------------------------------------------------------------------------------------
 # Налаштування
 # ------------------------------------------------------------------------------------
 
 SOURCE_URL = "https://companiesmarketcap.com/"
-TOP_N = 100                     # скільки компаній беремо з головної сторінки
+TOP_N = 100
 REQUEST_TIMEOUT = 15
-DELAY_BETWEEN_REQUESTS = 1.0    # секунда -- ввічливий скрапінг
+DELAY_BETWEEN_REQUESTS = 1.0
 
 HEADERS = {
     "User-Agent": (
@@ -53,13 +59,11 @@ HEADERS = {
     )
 }
 
-OUTPUT_CSV = "top100_marketcap_by_year.csv"
-OUTPUT_JSON = "top100_marketcap_by_year.json"
-
-IMAGES_DIR = "logos"    # папка, куди зберігаються завантажені іконки компаній
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
+IMAGES_DIR = os.path.join(OUTPUT_DIR, "images")
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-log = logging.getLogger("top100_scraper")
+log = logging.getLogger("full_scraper")
 
 COMPANY_LINK_RE = re.compile(r"^https?://companiesmarketcap\.com/([^/]+)/marketcap/?$")
 
@@ -70,6 +74,7 @@ COMPANY_LINK_RE = re.compile(r"^https?://companiesmarketcap\.com/([^/]+)/marketc
 
 @dataclass
 class Company:
+    id: int
     rank: Optional[int]
     name: str
     ticker: str
@@ -78,18 +83,24 @@ class Company:
 
 
 @dataclass
-class MarketcapYear:
-    company_name: str
-    ticker: str
+class StockRecord:
+    id: int
+    company_id: int
     year: str
     marketcap: str
     change_pct: str
-    image_url: str = ""           # посилання на іконку компанії (оригінальний URL)
-    image_local_path: str = ""    # шлях до вже завантаженого локального файлу іконки
+
+
+@dataclass
+class ImageItem:
+    id: int
+    company_id: int
+    image_url: str
+    local_path: Optional[str]
 
 
 # ------------------------------------------------------------------------------------
-# Допоміжні функції завантаження сторінок
+# Допоміжна функція завантаження сторінок
 # ------------------------------------------------------------------------------------
 
 def fetch_html(url: str, session: requests.Session) -> Optional[str]:
@@ -104,7 +115,39 @@ def fetch_html(url: str, session: requests.Session) -> Optional[str]:
 
 
 # ------------------------------------------------------------------------------------
-# Крок 1. Парсинг топ-100 компаній з головної сторінки
+# КРОК 2. Завантаження сторінки джерела, перевірка статичності, друк у консоль
+# ------------------------------------------------------------------------------------
+
+def check_page_is_static(html: str, expected_markers: List[str]) -> bool:
+    """
+    Якщо очікувані текстові маркери присутні у "сирому" HTML, отриманому
+    звичайним requests.get() без виконання JavaScript -- сторінка є
+    статичною (рендериться на сервері), а не довантажується скриптами
+    в браузері.
+    """
+    return all(marker in html for marker in expected_markers)
+
+
+def step2_download_and_print(url: str, session: requests.Session) -> str:
+    log.info(f"Крок 2: завантаження сторінки джерела: {url}")
+    html = fetch_html(url, session)
+    if html is None:
+        raise RuntimeError("Не вдалося завантажити сторінку джерела даних.")
+
+    is_static = check_page_is_static(html, ["Market Cap", "Rank"])
+    print("=" * 90)
+    print(f"URL: {url}")
+    print(f"Статус: сторінка {'СТАТИЧНА (SSR/HTML)' if is_static else 'ІМОВІРНО ДИНАМІЧНА (потребує JS)'}")
+    print(f"Розмір HTML: {len(html)} символів")
+    print("=" * 90)
+    print(html[:3000])
+    print("\n... [вивід обрізано для консолі; повний HTML -- у змінній 'html'] ...\n")
+    print("=" * 90)
+    return html
+
+
+# ------------------------------------------------------------------------------------
+# КРОК 3. Список підрозділів (топ-100 компаній) та їх URL -> TXT + XML
 # ------------------------------------------------------------------------------------
 
 def parse_top_companies(html: str, base_url: str, top_n: int) -> List[Company]:
@@ -115,6 +158,7 @@ def parse_top_companies(html: str, base_url: str, top_n: int) -> List[Company]:
         return []
 
     companies: List[Company] = []
+    comp_id = 1
 
     for tr in table.find_all("tr"):
         link = None
@@ -123,10 +167,10 @@ def parse_top_companies(html: str, base_url: str, top_n: int) -> List[Company]:
                 link = a
                 break
         if link is None:
-            continue  # службовий рядок (заголовок таблиці, реклама тощо)
+            continue  # службовий рядок (заголовок, реклама тощо)
 
         company_url = urljoin(base_url, link["href"])
-        full_text = link.get_text(strip=True)          # напр. "NVIDIA NVDA"
+        full_text = link.get_text(strip=True)
         parts = full_text.rsplit(" ", 1)
         name, ticker = (parts[0], parts[1]) if len(parts) == 2 else (full_text, "")
 
@@ -135,30 +179,54 @@ def parse_top_companies(html: str, base_url: str, top_n: int) -> List[Company]:
         marketcap_now = next((t for t in cell_texts if t.startswith("$")), "")
 
         companies.append(
-            Company(rank=rank, name=name, ticker=ticker, marketcap_now=marketcap_now, url=company_url)
+            Company(id=comp_id, rank=rank, name=name, ticker=ticker, marketcap_now=marketcap_now, url=company_url)
         )
-
+        comp_id += 1
         if len(companies) >= top_n:
             break
 
-    log.info(f"Знайдено компаній у списку: {len(companies)}")
+    log.info(f"Знайдено компаній (підрозділів): {len(companies)}")
     return companies
 
 
+def save_companies_txt(companies: List[Company], path: str) -> None:
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("Список підрозділів (топ-100 компаній за капіталізацією)\n")
+        f.write(f"Джерело: {SOURCE_URL}\n")
+        f.write("=" * 90 + "\n\n")
+        for c in companies:
+            f.write(f"[{c.id}] #{c.rank} {c.name} ({c.ticker})  MCap={c.marketcap_now}\n")
+            f.write(f"      URL: {c.url}\n")
+    log.info(f"Збережено: {path}")
+
+
+def save_companies_xml(companies: List[Company], path: str) -> None:
+    root = Element("companies", attrib={"source": SOURCE_URL})
+    for c in companies:
+        el = SubElement(root, "company", attrib={"id": str(c.id)})
+        SubElement(el, "rank").text = str(c.rank) if c.rank is not None else ""
+        SubElement(el, "name").text = c.name
+        SubElement(el, "ticker").text = c.ticker
+        SubElement(el, "marketcap_now").text = c.marketcap_now
+        SubElement(el, "url").text = c.url
+
+    xml_str = minidom.parseString(tostring(root, encoding="utf-8")).toprettyxml(indent="  ")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(xml_str)
+    log.info(f"Збережено: {path}")
+
+
 # ------------------------------------------------------------------------------------
-# Крок 2. Парсинг капіталізації за роками зі сторінки конкретної компанії
+# КРОК 4. Капіталізація за роками з кожної сторінки компанії -> TXT + JSON
 # ------------------------------------------------------------------------------------
 
-def parse_marketcap_by_year(html: str, company: Company) -> List[MarketcapYear]:
+def parse_marketcap_by_year(html: str, company: Company) -> List[StockRecord]:
     """
-    Шукає на сторінці компанії таблицю "Market cap history" зі стовпцями
-    Year | Marketcap | Change і повертає список записів (рік -> капіталізація).
-    Поля image_url / image_local_path тут ще порожні -- їх заповнює main()
-    після виклику download_company_logo() (див. нижче), щоб не завантажувати
-    сторінку компанії двічі.
+    Шукає таблицю "Year | Marketcap | Change" на сторінці компанії -- це і є
+    "список об'єктів" (пункт 1 завдання) на сторінці підрозділу.
     """
     soup = BeautifulSoup(html, "lxml")
-    results: List[MarketcapYear] = []
+    records: List[StockRecord] = []
 
     for table in soup.find_all("table"):
         headers = [th.get_text(strip=True).lower() for th in table.find_all("th")]
@@ -166,7 +234,6 @@ def parse_marketcap_by_year(html: str, company: Company) -> List[MarketcapYear]:
             first_row = table.find("tr")
             headers = [td.get_text(strip=True).lower() for td in first_row.find_all("td")] if first_row else []
 
-        # шукаємо саме таблицю "Year / Marketcap / ..." (не таблицю конкурентів)
         if headers[:2] == ["year", "marketcap"]:
             for tr in table.find_all("tr"):
                 cells = tr.find_all("td")
@@ -177,31 +244,69 @@ def parse_marketcap_by_year(html: str, company: Company) -> List[MarketcapYear]:
                     continue
                 marketcap = cells[1].get_text(strip=True)
                 change = cells[2].get_text(strip=True) if len(cells) > 2 else ""
-                results.append(
-                    MarketcapYear(
-                        company_name=company.name,
-                        ticker=company.ticker,
-                        year=year,
-                        marketcap=marketcap,
-                        change_pct=change,
-                    )
-                )
+                records.append(StockRecord(id=0, company_id=company.id, year=year, marketcap=marketcap, change_pct=change))
             break
 
-    return results
+    return records
+
+
+def step4_scrape_stock_records(
+    companies: List[Company], session: requests.Session, pages_cache: dict, limit: Optional[int] = None
+) -> List[StockRecord]:
+    """
+    pages_cache: {company_id: html} -- заповнюється тут і повторно
+    використовується кроком 5, щоб не завантажувати сторінку компанії двічі.
+    """
+    all_records: List[StockRecord] = []
+    rec_id = 1
+    subset = companies[:limit] if limit else companies
+
+    for c in subset:
+        log.info(f"Компанія [{c.id}] {c.name} ({c.ticker}) -> {c.url}")
+        html = fetch_html(c.url, session)
+        time.sleep(DELAY_BETWEEN_REQUESTS)
+        if html is None:
+            log.warning(f"  Пропущено (сторінка не завантажилась): {c.url}")
+            continue
+        pages_cache[c.id] = html
+
+        records = parse_marketcap_by_year(html, c)
+        for r in records:
+            r.id = rec_id
+            rec_id += 1
+        log.info(f"  Знайдено річних записів капіталізації: {len(records)}")
+        all_records.extend(records)
+
+    return all_records
+
+
+def save_stock_records_txt(records: List[StockRecord], companies: List[Company], path: str) -> None:
+    comp_by_id = {c.id: c for c in companies}
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("Капіталізація компаній за роками (результат скрапінгу)\n")
+        f.write("=" * 90 + "\n\n")
+        current = None
+        for r in records:
+            if r.company_id != current:
+                current = r.company_id
+                c = comp_by_id.get(current)
+                header = f"{c.name} ({c.ticker})" if c else f"Компанія #{current}"
+                f.write(f"\n{header}  ({c.url if c else ''})\n" + "-" * 60 + "\n")
+            f.write(f"  {r.year}: {r.marketcap}  ({r.change_pct})\n")
+    log.info(f"Збережено: {path}")
+
+
+def save_stock_records_json(records: List[StockRecord], path: str) -> None:
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump([asdict(r) for r in records], f, ensure_ascii=False, indent=2)
+    log.info(f"Збережено: {path}")
 
 
 # ------------------------------------------------------------------------------------
-# Крок 3. Іконка (логотип) компанії -- пошук URL і завантаження у файл
+# КРОК 5. Зображення (іконки компаній) -> окрема папка + TXT + CSV
 # ------------------------------------------------------------------------------------
 
 def extract_logo_url(html: str, page_url: str) -> Optional[str]:
-    """
-    Шукає на сторінці компанії URL її іконки (логотипу). На цьому сайті
-    логотипи компаній мають src з підрядком "company-logos" -- прапори
-    країн, службові піктограми тощо цього підрядка не містять, тож фільтр
-    надійно відрізняє саме логотип компанії від решти зображень сторінки.
-    """
     soup = BeautifulSoup(html, "lxml")
     for img in soup.find_all("img"):
         src = img.get("src") or img.get("data-src")
@@ -211,11 +316,6 @@ def extract_logo_url(html: str, page_url: str) -> Optional[str]:
 
 
 def download_image(url: str, dest_dir: str, filename: str, session: requests.Session) -> Optional[str]:
-    """
-    Завантажує зображення за URL і зберігає його у файл dest_dir/filename.
-    Повертає шлях до збереженого файлу або None, якщо завантажити не вдалося
-    (мережева помилка, помилка запису на диск тощо).
-    """
     try:
         resp = session.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT, stream=True)
         resp.raise_for_status()
@@ -225,10 +325,9 @@ def download_image(url: str, dest_dir: str, filename: str, session: requests.Ses
 
     os.makedirs(dest_dir, exist_ok=True)
     dest_path = os.path.join(dest_dir, filename)
-
     try:
         with open(dest_path, "wb") as f:
-            for chunk in resp.iter_content(8192):    # пишемо частинами -- економія пам'яті на великих файлах
+            for chunk in resp.iter_content(8192):
                 f.write(chunk)
         return dest_path
     except OSError as e:
@@ -236,52 +335,103 @@ def download_image(url: str, dest_dir: str, filename: str, session: requests.Ses
         return None
 
 
-def download_company_logo(
-    html: str, company: Company, images_dir: str, session: requests.Session
-) -> "tuple[str, str]":
-    """
-    Об'єднує пошук URL іконки компанії та її завантаження у файл в один
-    крок. Ім'я файлу будується з тикера компанії (напр. "NVDA.png").
-    Повертає пару (image_url, image_local_path) -- саме ці рядки далі
-    записуються у кожен JSON-запис цієї компанії. Якщо іконку не знайдено
-    або не вдалося завантажити -- відповідне значення буде порожнім рядком.
-    """
-    logo_url = extract_logo_url(html, company.url)
-    if logo_url is None:
-        log.warning(f"  Іконку компанії не знайдено на сторінці {company.url}")
-        return "", ""
+def step5_scrape_images(
+    companies: List[Company], session: requests.Session, images_dir: str, pages_cache: dict, limit: Optional[int] = None
+) -> List[ImageItem]:
+    os.makedirs(images_dir, exist_ok=True)
+    all_images: List[ImageItem] = []
+    img_id = 1
+    subset = companies[:limit] if limit else companies
 
-    ext = os.path.splitext(urlparse(logo_url).path)[1] or ".png"
-    safe_name = (company.ticker or company.name).replace(" ", "_").replace("/", "_")
-    filename = f"{safe_name}{ext}"
+    for c in subset:
+        # використовуємо вже завантажену на кроці 4 сторінку (з кешу), а не тягнемо її знову
+        html = pages_cache.get(c.id)
+        if html is None:
+            html = fetch_html(c.url, session)
+            time.sleep(DELAY_BETWEEN_REQUESTS)
+        if html is None:
+            continue
 
-    local_path = download_image(logo_url, images_dir, filename, session)
-    return logo_url, (local_path or "")
+        logo_url = extract_logo_url(html, c.url)
+        if logo_url is None:
+            log.warning(f"  Іконку не знайдено для {c.name}")
+            continue
+
+        ext = os.path.splitext(urlparse(logo_url).path)[1] or ".png"
+        filename = f"{(c.ticker or c.name).replace(' ', '_').replace('/', '_')}{ext}"
+        local_path = download_image(logo_url, images_dir, filename, session)
+
+        all_images.append(ImageItem(id=img_id, company_id=c.id, image_url=logo_url, local_path=local_path))
+        img_id += 1
+
+    return all_images
 
 
-# ------------------------------------------------------------------------------------
-# Збереження результатів
-# ------------------------------------------------------------------------------------
+def save_images_txt(images: List[ImageItem], path: str) -> None:
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("Список зображень (іконок компаній)\n")
+        f.write("=" * 90 + "\n\n")
+        for im in images:
+            f.write(f"[{im.id}] company={im.company_id}  {im.image_url}  ->  {im.local_path}\n")
+    log.info(f"Збережено: {path}")
 
-def save_csv(rows: List[MarketcapYear], path: str) -> None:
+
+def save_images_csv(images: List[ImageItem], path: str) -> None:
     with open(path, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(
-            ["company_name", "ticker", "year", "marketcap", "change_pct", "image_url", "image_local_path"]
-        )
-        for r in rows:
-            writer.writerow(
-                [r.company_name, r.ticker, r.year, r.marketcap, r.change_pct, r.image_url, r.image_local_path]
-            )
+        writer.writerow(["id", "company_id", "image_url", "local_path"])
+        for im in images:
+            writer.writerow([im.id, im.company_id, im.image_url, im.local_path or ""])
     log.info(f"Збережено: {path}")
 
 
-def save_json(rows: List[MarketcapYear], path: str) -> None:
-    # asdict() перетворює кожен MarketcapYear (разом з image_url/image_local_path) у dict,
-    # тож посилання на іконку компанії опиняється у КОЖНОМУ записі JSON-файлу.
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump([asdict(r) for r in rows], f, ensure_ascii=False, indent=2)
-    log.info(f"Збережено: {path}")
+# ------------------------------------------------------------------------------------
+# КРОК 6. Збереження усіх даних до бази даних (SQLite)
+# ------------------------------------------------------------------------------------
+
+def save_to_database(
+    companies: List[Company], records: List[StockRecord], images: List[ImageItem], db_path: str
+) -> None:
+    if os.path.exists(db_path):
+        os.remove(db_path)
+
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+
+    cur.execute(
+        """CREATE TABLE companies (
+            id INTEGER PRIMARY KEY, rank INTEGER, name TEXT NOT NULL,
+            ticker TEXT, marketcap_now TEXT, url TEXT NOT NULL)"""
+    )
+    cur.execute(
+        """CREATE TABLE stock_records (
+            id INTEGER PRIMARY KEY, company_id INTEGER NOT NULL,
+            year TEXT NOT NULL, marketcap TEXT, change_pct TEXT,
+            FOREIGN KEY (company_id) REFERENCES companies(id))"""
+    )
+    cur.execute(
+        """CREATE TABLE images (
+            id INTEGER PRIMARY KEY, company_id INTEGER NOT NULL,
+            image_url TEXT NOT NULL, local_path TEXT,
+            FOREIGN KEY (company_id) REFERENCES companies(id))"""
+    )
+
+    cur.executemany(
+        "INSERT INTO companies (id, rank, name, ticker, marketcap_now, url) VALUES (?, ?, ?, ?, ?, ?)",
+        [(c.id, c.rank, c.name, c.ticker, c.marketcap_now, c.url) for c in companies],
+    )
+    cur.executemany(
+        "INSERT INTO stock_records (id, company_id, year, marketcap, change_pct) VALUES (?, ?, ?, ?, ?)",
+        [(r.id, r.company_id, r.year, r.marketcap, r.change_pct) for r in records],
+    )
+    cur.executemany(
+        "INSERT INTO images (id, company_id, image_url, local_path) VALUES (?, ?, ?, ?)",
+        [(i.id, i.company_id, i.image_url, i.local_path) for i in images],
+    )
+
+    conn.commit()
+    conn.close()
+    log.info(f"Збережено базу даних: {db_path}")
 
 
 # ------------------------------------------------------------------------------------
@@ -289,58 +439,35 @@ def save_json(rows: List[MarketcapYear], path: str) -> None:
 # ------------------------------------------------------------------------------------
 
 def main():
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    os.makedirs(IMAGES_DIR, exist_ok=True)
     session = requests.Session()
 
-    # Створюємо окрему папку для зображень (іконок компаній) ЗАВЖДИ, на самому
-    # старті програми -- незалежно від того, скільком компаніям вдасться
-    # завантажити іконку. Так папка існує навіть при 0 успішних завантаженнях,
-    # і в неї, а не кудись інше, потраплятимуть усі файли з download_image().
-    os.makedirs(IMAGES_DIR, exist_ok=True)
-    log.info(f"Папка для зображень: {os.path.abspath(IMAGES_DIR)}")
+    # Крок 2
+    html = step2_download_and_print(SOURCE_URL, session)
 
-    # 1. Топ-100 компаній
-    log.info(f"Завантаження списку компаній: {SOURCE_URL}")
-    main_html = fetch_html(SOURCE_URL, session)
-    if main_html is None:
-        raise RuntimeError("Не вдалося завантажити головну сторінку джерела.")
+    # Крок 3
+    companies = parse_top_companies(html, SOURCE_URL, TOP_N)
+    save_companies_txt(companies, os.path.join(OUTPUT_DIR, "companies.txt"))
+    save_companies_xml(companies, os.path.join(OUTPUT_DIR, "companies.xml"))
 
-    companies = parse_top_companies(main_html, SOURCE_URL, TOP_N)
+    # Кеш HTML-сторінок компаній, щоб крок 5 не завантажував їх повторно
+    pages_cache: dict = {}
 
-    # 2. Для кожної компанії -- капіталізація за роками + іконка (логотип)
-    all_rows: List[MarketcapYear] = []
-    logos_downloaded = 0
+    # Крок 4
+    records = step4_scrape_stock_records(companies, session, pages_cache)
+    save_stock_records_txt(records, companies, os.path.join(OUTPUT_DIR, "stock_records.txt"))
+    save_stock_records_json(records, os.path.join(OUTPUT_DIR, "stock_records.json"))
 
-    for i, company in enumerate(companies, start=1):
-        log.info(f"[{i}/{len(companies)}] {company.name} ({company.ticker}) -> {company.url}")
-        html = fetch_html(company.url, session)
-        time.sleep(DELAY_BETWEEN_REQUESTS)
-        if html is None:
-            log.warning(f"  Пропущено: {company.url}")
-            continue
+    # Крок 5
+    images = step5_scrape_images(companies, session, IMAGES_DIR, pages_cache)
+    save_images_txt(images, os.path.join(OUTPUT_DIR, "images.txt"))
+    save_images_csv(images, os.path.join(OUTPUT_DIR, "images.csv"))
 
-        rows = parse_marketcap_by_year(html, company)
-        log.info(f"  Знайдено {len(rows)} річних записів капіталізації")
+    # Крок 6
+    save_to_database(companies, records, images, os.path.join(OUTPUT_DIR, "stocks_data.db"))
 
-        # одне завантаження іконки на компанію -- і посилання додається у ВСІ
-        # рядки цієї компанії (кожен рік капіталізації)
-        image_url, image_local_path = download_company_logo(html, company, IMAGES_DIR, session)
-        if image_local_path:
-            logos_downloaded += 1
-            log.info(f"  Іконку збережено: {image_local_path}")
-
-        for r in rows:
-            r.image_url = image_url
-            r.image_local_path = image_local_path
-
-        all_rows.extend(rows)
-
-    # 3. Збереження
-    save_csv(all_rows, OUTPUT_CSV)
-    save_json(all_rows, OUTPUT_JSON)
-    log.info(
-        f"Готово. Усього записів: {len(all_rows)}; іконок завантажено: "
-        f"{logos_downloaded}/{len(companies)}"
-    )
+    log.info("Готово. Усі результати -- у папці 'output/'.")
 
 
 if __name__ == "__main__":

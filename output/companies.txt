@@ -1,0 +1,204 @@
+Список підрозділів (топ-100 компаній за капіталізацією)
+Джерело: https://companiesmarketcap.com/
+==========================================================================================
+
+[1] #1 NVIDIANVDA ()  MCap=$5.490 T
+      URL: https://companiesmarketcap.com/nvidia/marketcap/
+[2] #2 AppleAAPL ()  MCap=$4.947 T
+      URL: https://companiesmarketcap.com/apple/marketcap/
+[3] #3 Alphabet ((Google)GOOG)  MCap=$4.291 T
+      URL: https://companiesmarketcap.com/alphabet-google/marketcap/
+[4] #4 MicrosoftMSFT ()  MCap=$3.724 T
+      URL: https://companiesmarketcap.com/microsoft/marketcap/
+[5] #5 AmazonAMZN ()  MCap=$2.787 T
+      URL: https://companiesmarketcap.com/amazon/marketcap/
+[6] #6 TSMCTSM ()  MCap=$2.308 T
+      URL: https://companiesmarketcap.com/tsmc/marketcap/
+[7] #7 SpaceXSPCX ()  MCap=$2.001 T
+      URL: https://companiesmarketcap.com/spacex/marketcap/
+[8] #8 Meta Platforms ((Facebook)META)  MCap=$1.888 T
+      URL: https://companiesmarketcap.com/meta-platforms/marketcap/
+[9] #9 BroadcomAVGO ()  MCap=$1.731 T
+      URL: https://companiesmarketcap.com/broadcom/marketcap/
+[10] #10 Saudi (Aramco2222.SR)  MCap=$1.653 T
+      URL: https://companiesmarketcap.com/saudi-aramco/marketcap/
+[11] #11 TeslaTSLA ()  MCap=$1.482 T
+      URL: https://companiesmarketcap.com/tesla/marketcap/
+[12] #12 Samsung005930.KS ()  MCap=$1.338 T
+      URL: https://companiesmarketcap.com/samsung/marketcap/
+[13] #13 Micron (TechnologyMU)  MCap=$1.179 T
+      URL: https://companiesmarketcap.com/micron-technology/marketcap/
+[14] #14 Berkshire (HathawayBRK-B)  MCap=$1.074 T
+      URL: https://companiesmarketcap.com/berkshire-hathaway/marketcap/
+[15] #15 Eli (LillyLLY)  MCap=$1.038 T
+      URL: https://companiesmarketcap.com/eli-lilly/marketcap/
+[16] #16 AMDAMD ()  MCap=$1.004 T
+      URL: https://companiesmarketcap.com/amd/marketcap/
+[17] #17 SK (Hynix000660.KS)  MCap=$962.81 B
+      URL: https://companiesmarketcap.com/sk-hynix/marketcap/
+[18] #18 JPMorgan (ChaseJPM)  MCap=$935.78 B
+      URL: https://companiesmarketcap.com/jp-morgan-chase/marketcap/
+[19] #19 WalmartWMT ()  MCap=$855.01 B
+      URL: https://companiesmarketcap.com/walmart/marketcap/
+[20] #20 VisaV ()  MCap=$694.52 B
+      URL: https://companiesmarketcap.com/visa/marketcap/
+[21] #21 ASMLASML ()  MCap=$657.31 B
+      URL: https://companiesmarketcap.com/asml/marketcap/
+[22] #22 Exxon (MobilXOM)  MCap=$650.91 B
+      URL: https://companiesmarketcap.com/exxon-mobil/marketcap/
+[23] #23 Johnson & (JohnsonJNJ)  MCap=$649.39 B
+      URL: https://companiesmarketcap.com/johnson-and-johnson/marketcap/
+[24] #24 IntelINTC ()  MCap=$643.74 B
+      URL: https://companiesmarketcap.com/intel/marketcap/
+[25] #25 CXMT688825.SS ()  MCap=$611.91 B
+      URL: https://companiesmarketcap.com/cxmt/marketcap/
+[26] #26 TencentTCEHY ()  MCap=$504.49 B
+      URL: https://companiesmarketcap.com/tencent/marketcap/
+[27] #27 MastercardMA ()  MCap=$497.26 B
+      URL: https://companiesmarketcap.com/mastercard/marketcap/
+[28] #28 AbbVieABBV ()  MCap=$467.36 B
+      URL: https://companiesmarketcap.com/abbvie/marketcap/
+[29] #29 OracleORCL ()  MCap=$449.20 B
+      URL: https://companiesmarketcap.com/oracle/marketcap/
+[30] #30 PalantirPLTR ()  MCap=$439.97 B
+      URL: https://companiesmarketcap.com/palantir/marketcap/
+[31] #31 CiscoCSCO ()  MCap=$439.44 B
+      URL: https://companiesmarketcap.com/cisco/marketcap/
+[32] #32 China Construction (Bank601939.SS)  MCap=$426.62 B
+      URL: https://companiesmarketcap.com/china-construction-bank/marketcap/
+[33] #33 Bank of (AmericaBAC)  MCap=$405.29 B
+      URL: https://companiesmarketcap.com/bank-of-america/marketcap/
+[34] #34 ChevronCVX ()  MCap=$399.51 B
+      URL: https://companiesmarketcap.com/chevron/marketcap/
+[35] #35 CostcoCOST ()  MCap=$398.45 B
+      URL: https://companiesmarketcap.com/costco/marketcap/
+[36] #36 Lam (ResearchLRCX)  MCap=$378.24 B
+      URL: https://companiesmarketcap.com/lam-research/marketcap/
+[37] #37 CaterpillarCAT ()  MCap=$375.32 B
+      URL: https://companiesmarketcap.com/caterpillar/marketcap/
+[38] #38 Coca-ColaKO ()  MCap=$374.83 B
+      URL: https://companiesmarketcap.com/coca-cola/marketcap/
+[39] #39 MerckMRK ()  MCap=$368.84 B
+      URL: https://companiesmarketcap.com/merck/marketcap/
+[40] #40 Applied (MaterialsAMAT)  MCap=$368.41 B
+      URL: https://companiesmarketcap.com/applied-materials/marketcap/
+[41] #41 DellDELL ()  MCap=$365.78 B
+      URL: https://companiesmarketcap.com/dell/marketcap/
+[42] #42 RocheRO.SW ()  MCap=$360.53 B
+      URL: https://companiesmarketcap.com/roche/marketcap/
+[43] #43 Agricultural Bank of (China601288.SS)  MCap=$360.12 B
+      URL: https://companiesmarketcap.com/agricultural-bank-of-china/marketcap/
+[44] #44 HSBCHSBC ()  MCap=$353.20 B
+      URL: https://companiesmarketcap.com/hsbc/marketcap/
+[45] #45 Arm (HoldingsARM)  MCap=$344.85 B
+      URL: https://companiesmarketcap.com/arm-holdings/marketcap/
+[46] #46 ICBC1398.HK ()  MCap=$341.91 B
+      URL: https://companiesmarketcap.com/icbc/marketcap/
+[47] #47 Procter & (GamblePG)  MCap=$339.29 B
+      URL: https://companiesmarketcap.com/procter-and-gamble/marketcap/
+[48] #48 UnitedHealthUNH ()  MCap=$338.89 B
+      URL: https://companiesmarketcap.com/united-health/marketcap/
+[49] #49 General (ElectricGE)  MCap=$330.99 B
+      URL: https://companiesmarketcap.com/general-electric/marketcap/
+[50] #50 Morgan (StanleyMS)  MCap=$323.72 B
+      URL: https://companiesmarketcap.com/morgan-stanley/marketcap/
+[51] #51 Bank of (China601988.SS)  MCap=$319.99 B
+      URL: https://companiesmarketcap.com/bank-of-china/marketcap/
+[52] #52 NetflixNFLX ()  MCap=$305.46 B
+      URL: https://companiesmarketcap.com/netflix/marketcap/
+[53] #53 Palo Alto (NetworksPANW)  MCap=$304.09 B
+      URL: https://companiesmarketcap.com/palo-alto-networks/marketcap/
+[54] #54 Home (DepotHD)  MCap=$296.51 B
+      URL: https://companiesmarketcap.com/home-depot/marketcap/
+[55] #55 Philip Morris (InternationalPM)  MCap=$292.20 B
+      URL: https://companiesmarketcap.com/philip-morris/marketcap/
+[56] #56 AlibabaBABA ()  MCap=$287.71 B
+      URL: https://companiesmarketcap.com/alibaba/marketcap/
+[57] #57 Royal Bank Of (CanadaRY)  MCap=$285.45 B
+      URL: https://companiesmarketcap.com/royal-bank-of-canada/marketcap/
+[58] #58 Goldman (SachsGS)  MCap=$279.34 B
+      URL: https://companiesmarketcap.com/goldman-sachs/marketcap/
+[59] #59 NovartisNVS ()  MCap=$267.96 B
+      URL: https://companiesmarketcap.com/novartis/marketcap/
+[60] #60 ShellSHEL ()  MCap=$266.35 B
+      URL: https://companiesmarketcap.com/shell/marketcap/
+[61] #61 Mitsubishi UFJ (FinancialMUFG)  MCap=$263.61 B
+      URL: https://companiesmarketcap.com/mitsubishi-ufj-financial/marketcap/
+[62] #62 RTXRTX ()  MCap=$261.92 B
+      URL: https://companiesmarketcap.com/raytheon-technologies/marketcap/
+[63] #63 Wells (FargoWFC)  MCap=$261.69 B
+      URL: https://companiesmarketcap.com/wells-fargo/marketcap/
+[64] #64 MediaTek2454.TW ()  MCap=$261.21 B
+      URL: https://companiesmarketcap.com/mediatek/marketcap/
+[65] #65 AstraZenecaAZN ()  MCap=$260.70 B
+      URL: https://companiesmarketcap.com/astrazeneca/marketcap/
+[66] #66 Arista (NetworksANET)  MCap=$259.08 B
+      URL: https://companiesmarketcap.com/arista-networks/marketcap/
+[67] #67 SandiskSNDK ()  MCap=$258.66 B
+      URL: https://companiesmarketcap.com/sandisk/marketcap/
+[68] #68 CrowdStrikeCRWD ()  MCap=$255.31 B
+      URL: https://companiesmarketcap.com/crowdstrike/marketcap/
+[69] #69 GE (VernovaGEV)  MCap=$252.01 B
+      URL: https://companiesmarketcap.com/ge-vernova/marketcap/
+[70] #70 Texas (InstrumentsTXN)  MCap=$247.37 B
+      URL: https://companiesmarketcap.com/texas-instruments/marketcap/
+[71] #71 SiemensSIE.DE ()  MCap=$245.08 B
+      URL: https://companiesmarketcap.com/siemens/marketcap/
+[72] #72 Thermo Fisher (ScientificTMO)  MCap=$243.57 B
+      URL: https://companiesmarketcap.com/thermo-fisher-scientific/marketcap/
+[73] #73 SAPSAP ()  MCap=$241.48 B
+      URL: https://companiesmarketcap.com/sap/marketcap/
+[74] #74 NestléNESN.SW ()  MCap=$240.39 B
+      URL: https://companiesmarketcap.com/nestle/marketcap/
+[75] #75 KLAKLAC ()  MCap=$240.36 B
+      URL: https://companiesmarketcap.com/kla/marketcap/
+[76] #76 L'OréalOR.PA ()  MCap=$236.75 B
+      URL: https://companiesmarketcap.com/l-oreal/marketcap/
+[77] #77 Kweichow (Moutai600519.SS)  MCap=$234.35 B
+      URL: https://companiesmarketcap.com/kweichow-moutai/marketcap/
+[78] #78 Marvell (TechnologyMRVL)  MCap=$231.30 B
+      URL: https://companiesmarketcap.com/marvell/marketcap/
+[79] #79 LVMHMC.PA ()  MCap=$228.89 B
+      URL: https://companiesmarketcap.com/lvmh/marketcap/
+[80] #80 SoftBank Group (Corp.9984.T)  MCap=$228.46 B
+      URL: https://companiesmarketcap.com/softbank/marketcap/
+[81] #81 ToyotaTM ()  MCap=$227.95 B
+      URL: https://companiesmarketcap.com/toyota/marketcap/
+[82] #82 CitigroupC ()  MCap=$226.53 B
+      URL: https://companiesmarketcap.com/citigroup/marketcap/
+[83] #83 PetroChina0857.HK ()  MCap=$220.49 B
+      URL: https://companiesmarketcap.com/petro-china/marketcap/
+[84] #84 International Holding (CompanyIHC.AE)  MCap=$219.19 B
+      URL: https://companiesmarketcap.com/international-holding-company/marketcap/
+[85] #85 BHP (GroupBHP)  MCap=$218.79 B
+      URL: https://companiesmarketcap.com/bhp-group/marketcap/
+[86] #86 China (Mobile0941.HK)  MCap=$218.52 B
+      URL: https://companiesmarketcap.com/china-mobile/marketcap/
+[87] #87 IBMIBM ()  MCap=$218.50 B
+      URL: https://companiesmarketcap.com/ibm/marketcap/
+[88] #88 AmgenAMGN ()  MCap=$212.55 B
+      URL: https://companiesmarketcap.com/amgen/marketcap/
+[89] #89 SantanderSAN ()  MCap=$212.11 B
+      URL: https://companiesmarketcap.com/santander/marketcap/
+[90] #90 American (ExpressAXP)  MCap=$211.77 B
+      URL: https://companiesmarketcap.com/american-express/marketcap/
+[91] #91 LindeLIN ()  MCap=$210.89 B
+      URL: https://companiesmarketcap.com/linde/marketcap/
+[92] #92 CATL300750.SZ ()  MCap=$210.51 B
+      URL: https://companiesmarketcap.com/catl/marketcap/
+[93] #93 QUALCOMMQCOM ()  MCap=$207.44 B
+      URL: https://companiesmarketcap.com/qualcomm/marketcap/
+[94] #94 Toronto Dominion (BankTD)  MCap=$203.24 B
+      URL: https://companiesmarketcap.com/toronto-dominion-bank/marketcap/
+[95] #95 Seagate (TechnologySTX)  MCap=$199.49 B
+      URL: https://companiesmarketcap.com/seagate/marketcap/
+[96] #96 AmphenolAPH ()  MCap=$199.05 B
+      URL: https://companiesmarketcap.com/amphenol/marketcap/
+[97] #97 TotalEnergiesTTE ()  MCap=$198.94 B
+      URL: https://companiesmarketcap.com/totalenergies/marketcap/
+[98] #98 VerizonVZ ()  MCap=$198.09 B
+      URL: https://companiesmarketcap.com/verizon/marketcap/
+[99] #99 SalesforceCRM ()  MCap=$194.57 B
+      URL: https://companiesmarketcap.com/salesforce/marketcap/
+[100] #100 Allianz (SEALV.DE)  MCap=$193.66 B
+      URL: https://companiesmarketcap.com/allianz/marketcap/
